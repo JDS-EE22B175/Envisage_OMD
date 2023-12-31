@@ -12,11 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: Laboratory
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: Laboratory
   m_Data:
     m_SerializedData: []
   m_GUID: 83ab83be027a5244983a5f70d7ea8425
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 375fad4b0c3b0904285ce0465d447f2f
+    m_Address: Assets/Models/Olivia
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c38c950da3c8343418f5461c6061264a
+    m_Address: Assets/Models/Laboratory
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 008a75e5c63465c46ab7a13582262944, type: 2}
   m_SchemaSet:
