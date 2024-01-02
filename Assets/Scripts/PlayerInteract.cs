@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public float interactRange = 1.5f;
-    public bool isinteracting = false;
-    public static IInteractable interactable;
+    public static bool isinteracting = false;
+    public bool isInteractingView = false;
+    static IInteractable interactable = null;
+    public static IInteractable closestInteractable = null;
     public bool hasPendant = false;
     public float interactBufferTime = 1f;
+    public bool canInteract = true;
+    float timeSinceInteractionStarted = 0f;
+    public string Name = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +23,39 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        isInteractingView = isinteracting;
+
+        if(closestInteractable != null)
+        {
+            Name = closestInteractable.GetInteractText();
+        }
+        else
+        {
+            Name = "";
+        }
+
+        GetInteractable();
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             interactable = GetInteractable();
-            if(interactable != null && !isinteracting)
+            if(interactable != null && !isinteracting && canInteract)
             {
                 interactable.Interact(transform);
                 isinteracting = true;
+                canInteract = false;
             }
+        }
+
+        if(!canInteract)
+        {
+            timeSinceInteractionStarted += Time.deltaTime;
+        }
+
+        if(timeSinceInteractionStarted >= interactBufferTime)
+        {
+            timeSinceInteractionStarted = 0f;
+            canInteract = true;
         }
 
     }
@@ -44,7 +74,7 @@ public class PlayerInteract : MonoBehaviour
         }
 
 
-        IInteractable closestInteractable = null;
+        closestInteractable = null;
         foreach(IInteractable interactable in interactableList)
         {
             if (closestInteractable == null)

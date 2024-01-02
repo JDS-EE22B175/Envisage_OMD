@@ -34,7 +34,8 @@ public class PendantInteractable : MonoBehaviour, IInteractable
     {
         pendantUI.color = new Color(255, 255, 255, 255);
         yield return new WaitForSeconds(pickUpTime);
-        playerInteract.isinteracting = false;
+        PlayerInteract.isinteracting = false;
+        PlayerInteract.closestInteractable = null;
         Destroy(gameObject);
     }
     public string GetInteractText()

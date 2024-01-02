@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
     [SerializeField] private GameObject containerObject;
-    [SerializeField] private PlayerInteract playerInteract;
     [SerializeField] private TextMeshProUGUI interactText;
+    [SerializeField] Slider timeSlider;
+    [SerializeField] TextMeshProUGUI time;
 
     private void Update()
     {
-        if (playerInteract.GetInteractable() != null) 
+        if (PlayerInteract.closestInteractable != null) 
         {
-            Show(playerInteract.GetInteractable());
+            Show(PlayerInteract.closestInteractable);
         }
         else Hide();
+
+        time.text = TimeLoop.text;
+        timeSlider.value = TimeLoop.timeLeft / TimeLoop.loopDuration;
     }
     private void Show(IInteractable interactable)
     {
-        containerObject.SetActive(true);
-        interactText.text = interactable.GetInteractText();
+        if (!PlayerInteract.isinteracting)
+        {
+            containerObject.SetActive(true);
+            interactText.text = interactable.GetInteractText();
+        }
     }
 
     private void Hide()

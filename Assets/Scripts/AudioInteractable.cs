@@ -34,7 +34,7 @@ public class AudioInteractable : MonoBehaviour, IInteractable
         audioSource.enabled = false;
 
         interactorTransform.gameObject.GetComponent<PlayerMovement>().canMove = true;
-        interactorTransform.GetComponent<PlayerInteract>().isinteracting = false;
+        PlayerInteract.isinteracting = false;
     }
     public string GetInteractText()
     {

@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSlider: {fileID: 777820427}
-  time: {fileID: 777820426}
+  virtualCamera: {fileID: 0}
 --- !u!4 &764161695
 Transform:
   m_ObjectHideFlags: 0
@@ -1353,7 +1353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7571459
+      value: -1.33
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1361,7 +1361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11
+      value: -9.99
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2544,6 +2544,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2155754794451181729, guid: d5e8b33a1ba04884d8aacd0e869dcc31, type: 3}
+      propertyPath: time
+      value: 
+      objectReference: {fileID: 777820426}
+    - target: {fileID: 2155754794451181729, guid: d5e8b33a1ba04884d8aacd0e869dcc31, type: 3}
+      propertyPath: timeSlider
+      value: 
+      objectReference: {fileID: 777820427}
     - target: {fileID: 2155754794451181729, guid: d5e8b33a1ba04884d8aacd0e869dcc31, type: 3}
       propertyPath: interactText
       value: 

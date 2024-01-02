@@ -7,7 +7,6 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
-    [SerializeField] GameObject player;
     public float textSpeed = 0.05f; // Adjust the speed as needed
     
     private List<string> dialogueLines;
@@ -52,6 +51,6 @@ public class DialogueManager : MonoBehaviour
         isDisplayingText = false;
         dialogueText.text = "";
         gameObject.SetActive(false);
-        player.GetComponent<PlayerInteract>().isinteracting = false;
+        PlayerInteract.isinteracting = false;
     }
 }

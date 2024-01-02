@@ -43,7 +43,7 @@ public class TimeMachine : MonoBehaviour, IInteractable
         player.gameObject.GetComponent<PlayerMovement>().canMove = true;
         VirtualCamera.GetComponent<MouseLook>().enabled = true;
         playerInteract.enabled = true;
-        playerInteract.isinteracting = false;
+        PlayerInteract.isinteracting = false;
         interactionUIContainer.SetActive(true);
         pauseButton.SetActive(true);
         backpack.SetActive(true);

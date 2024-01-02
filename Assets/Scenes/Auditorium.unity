@@ -5758,6 +5758,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2155754794451181729, guid: d5e8b33a1ba04884d8aacd0e869dcc31, type: 3}
+      propertyPath: time
+      value: 
+      objectReference: {fileID: 425406879}
+    - target: {fileID: 2155754794451181729, guid: d5e8b33a1ba04884d8aacd0e869dcc31, type: 3}
+      propertyPath: timeSlider
+      value: 
+      objectReference: {fileID: 526196960}
+    - target: {fileID: 2155754794451181729, guid: d5e8b33a1ba04884d8aacd0e869dcc31, type: 3}
       propertyPath: interactText
       value: 
       objectReference: {fileID: 1968022856}
@@ -6391,6 +6399,10 @@ PrefabInstance:
       propertyPath: timeSlider
       value: 
       objectReference: {fileID: 526196960}
+    - target: {fileID: 1434971237751959273, guid: fee4a51ef6e486343be1dad99d4c28d2, type: 3}
+      propertyPath: virtualCamera
+      value: 
+      objectReference: {fileID: 1811562328}
     - target: {fileID: 3508269547566298563, guid: fee4a51ef6e486343be1dad99d4c28d2, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
