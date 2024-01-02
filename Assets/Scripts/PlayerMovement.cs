@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private CharacterController controller;
     [SerializeField] float speed = 1f; //0.025
-    float velX, velZ;
+    float velX, velZ, velY;
     [SerializeField] float acceleration = 1f;
     [SerializeField] float deceleration = 2f;
     [SerializeField] float MaxVel = 1f;
@@ -21,27 +21,40 @@ public class PlayerMovement : MonoBehaviour
     int velocityYHash;
 
     public bool canMove = true;
+    public float _gravity = -9.81f;
     // Start is called before the first frame update
     void Start()
     {
-    
+
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         velocityXHash = Animator.StringToHash("VelocityX");
         velocityYHash = Animator.StringToHash("VelocityZ"); // Actually Velocity Z
         walkingSound = GetComponent<AudioSource>();
 
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(this.gameObject);
             return;
         }
 
-        //GameObject.DontDestroyOnLoad(this.gameObject);
+        instance = this;
     }
 
     // Update is called once per frame
+    void ApplyGravity()
+    {
+        if (!controller.isGrounded)
+        { 
+            velY += _gravity * Time.deltaTime;
+        }
+        else
+        {
+            velY = 0f;
+        }
 
+        //Debug.Log(controller.isGrounded);
+    }
     void ChangeVelocity(bool forwardPressed, bool leftPressed, bool rightPressed, float currentMaxVel, bool backwardPressed)
     {
         if (forwardPressed && velZ < currentMaxVel)
@@ -130,8 +143,10 @@ public class PlayerMovement : MonoBehaviour
 
         ChangeVelocity(forward, left, right, MaxVel, backward);
         LockResetVelocity(forward, left, right, MaxVel, backward);
+        ApplyGravity();
 
-        Vector3 moveVector = new Vector3(velX, 0, velZ) * speed;
+
+        Vector3 moveVector = new Vector3(velX, velY, velZ) * speed;
         direction = transform.TransformDirection(moveVector);
 
         if (canMove)

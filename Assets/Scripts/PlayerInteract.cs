@@ -6,9 +6,9 @@ public class PlayerInteract : MonoBehaviour
 {
     public float interactRange = 1.5f;
     public bool isinteracting = false;
-    public GameObject dialogueBox;
     public static IInteractable interactable;
     public bool hasPendant = false;
+    public float interactBufferTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,6 @@ public class PlayerInteract : MonoBehaviour
             if(interactable != null && !isinteracting)
             {
                 interactable.Interact(transform);
-                //dialogueBox.SetActive(true);
                 isinteracting = true;
             }
         }

@@ -38,6 +38,7 @@ public class TimeMachine : MonoBehaviour, IInteractable
 
     public void CloseTimeMachineUI()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         TimeMachineUI.SetActive(false);
         player.gameObject.GetComponent<PlayerMovement>().canMove = true;
         VirtualCamera.GetComponent<MouseLook>().enabled = true;

@@ -32,11 +32,9 @@ public class PendantInteractable : MonoBehaviour, IInteractable
 
     IEnumerator PickUp()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
         pendantUI.color = new Color(255, 255, 255, 255);
         yield return new WaitForSeconds(pickUpTime);
-        Debug.Log("Done");
-
+        playerInteract.isinteracting = false;
         Destroy(gameObject);
     }
     public string GetInteractText()

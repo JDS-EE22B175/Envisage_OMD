@@ -25,6 +25,7 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     public void Interact(Transform interactorTransform)
     {
         // Debug.Log("Going To The " + gameObject.name.ToString().Split()[0]);
+        interactorTransform.GetComponent<PlayerInteract>().isinteracting = false;
         SceneManager.LoadScene(sceneToLoad);
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(virtualCamera);

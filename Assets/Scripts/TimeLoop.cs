@@ -7,13 +7,13 @@ using TMPro;
 
 public class TimeLoop : MonoBehaviour
 {
-    public static float loopDuration = 120f;
+    public static float loopDuration = 60f;
     [SerializeField] Slider timeSlider;
     int startTime = 6;
     int endTime = 12;
     public static float timeLeft = loopDuration;
     public static float secondsElapsed = 0f;
-    float hourDuration = 60f;
+    float hourDuration;
     int currentHour;
     [SerializeField] TextMeshProUGUI time;
 
@@ -23,6 +23,7 @@ public class TimeLoop : MonoBehaviour
         StartCoroutine(TimeLoopCoroutine());
         currentHour = startTime;
         secondsElapsed = 0f;
+        hourDuration = loopDuration / (endTime - startTime);
     }
 
     // Update is called once per frame
