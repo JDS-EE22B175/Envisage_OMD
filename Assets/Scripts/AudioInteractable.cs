@@ -11,6 +11,7 @@ public class AudioInteractable : MonoBehaviour, IInteractable
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        PlayerInteract.isinteracting = false;
     }
 
     // Update is called once per frame
@@ -23,8 +24,8 @@ public class AudioInteractable : MonoBehaviour, IInteractable
     {
         audioSource.enabled = true;
 
-        interactorTransform.gameObject.GetComponent<PlayerMovement>().canMove = false;
-
+        PlayerMovement.canMove = false;
+        PlayerInteract.isinteracting = true;
         StartCoroutine(ListenToAudio(interactorTransform));
     }
 
@@ -33,7 +34,7 @@ public class AudioInteractable : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(audioLength);
         audioSource.enabled = false;
 
-        interactorTransform.gameObject.GetComponent<PlayerMovement>().canMove = true;
+        PlayerMovement.canMove = true;
         PlayerInteract.isinteracting = false;
     }
     public string GetInteractText()

@@ -9,7 +9,6 @@ public class DoorInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] string sceneToLoad;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject virtualCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +24,9 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     public void Interact(Transform interactorTransform)
     {
         PlayerInteract.isinteracting = false;
+        Debug.Log("Loop Done");
         SceneManager.LoadScene(sceneToLoad);
         DontDestroyOnLoad(player);
-        DontDestroyOnLoad(virtualCamera);
 
     }
     public string GetInteractText()

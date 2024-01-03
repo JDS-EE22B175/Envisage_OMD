@@ -7,7 +7,7 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
-    public float textSpeed = 0.05f; // Adjust the speed as needed
+    public static float defaultTextSpeed = 0.05f; // Adjust the speed as needed
     
     private List<string> dialogueLines;
 
@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowDialogueText(List<string> dialoguelines)
+    public IEnumerator ShowDialogueText(List<string> dialoguelines, float textSpeed = 0.05f)
     {
         dialogueLines = dialoguelines;
         isDisplayingText = true;

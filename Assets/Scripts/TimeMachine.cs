@@ -11,21 +11,21 @@ public class TimeMachine : MonoBehaviour, IInteractable
     [SerializeField] GameObject puzzleButtons;
     [SerializeField] GameObject VirtualCamera;
     public static int puzzlesCompleted = 0;
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject pauseButton;
-    [SerializeField] GameObject backpack;
+    [SerializeField] GameObject pendant;
+
+
     public void Interact(Transform interactorTransform)
     {
         TimeMachineUI.SetActive(true);
-        interactorTransform.gameObject.GetComponent<PlayerMovement>().canMove = false;
+        PlayerMovement.canMove = false;
         VirtualCamera.GetComponent<MouseLook>().enabled = false;
         playerInteract.enabled = false;
         interactionUIContainer.SetActive(false);
         inputFields.SetActive(false);
         puzzleButtons.SetActive(true);
+        pendant.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
-        pauseButton.SetActive(false);
-        backpack.SetActive(false);
+
     }
     public string GetInteractText()
     {
@@ -40,19 +40,18 @@ public class TimeMachine : MonoBehaviour, IInteractable
     {
         Cursor.lockState = CursorLockMode.Locked;
         TimeMachineUI.SetActive(false);
-        player.gameObject.GetComponent<PlayerMovement>().canMove = true;
+        PlayerMovement.canMove = true;
         VirtualCamera.GetComponent<MouseLook>().enabled = true;
         playerInteract.enabled = true;
         PlayerInteract.isinteracting = false;
         interactionUIContainer.SetActive(true);
-        pauseButton.SetActive(true);
-        backpack.SetActive(true);
-
+        pendant.SetActive (true);
+        Debug.Log("UI Closed");
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerInteract.isinteracting = false;
     }
 
     // Update is called once per frame

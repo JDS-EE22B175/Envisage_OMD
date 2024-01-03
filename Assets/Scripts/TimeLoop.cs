@@ -41,7 +41,7 @@ public class TimeLoop : MonoBehaviour
         yield return new WaitForSeconds(loopDuration);
         
         SceneManager.LoadScene("Auditorium");
-        Debug.Log("Loop Done");
+        
         secondsElapsed = 0f;
         Destroy(virtualCamera);
         Destroy(gameObject);

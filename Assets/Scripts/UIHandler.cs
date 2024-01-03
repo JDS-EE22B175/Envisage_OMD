@@ -19,12 +19,17 @@ public class UIHandler : MonoBehaviour
         }
         else Hide();
 
+        if(PlayerInteract.isinteracting == true)
+        {
+            Hide();
+        }
+
         time.text = TimeLoop.text;
         timeSlider.value = TimeLoop.timeLeft / TimeLoop.loopDuration;
     }
     private void Show(IInteractable interactable)
     {
-        if (!PlayerInteract.isinteracting)
+        if (PlayerInteract.isinteracting == false)
         {
             containerObject.SetActive(true);
             interactText.text = interactable.GetInteractText();
@@ -35,4 +40,5 @@ public class UIHandler : MonoBehaviour
     {
         containerObject.SetActive(false);
     }
+
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement instance;
+    public static PlayerMovement playerInstance;
+    public static MouseLook vCaminstance;
+    public MouseLook virtualCamera;
 
     private Animator animator;
     private CharacterController controller;
@@ -20,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     int velocityXHash;
     int velocityYHash;
 
-    public bool canMove = true;
+    public static bool canMove = true;
     public float _gravity = -9.81f;
     // Start is called before the first frame update
     void Start()
@@ -32,13 +34,15 @@ public class PlayerMovement : MonoBehaviour
         velocityYHash = Animator.StringToHash("VelocityZ"); // Actually Velocity Z
         walkingSound = GetComponent<AudioSource>();
 
-        if (instance != null)
+        if (playerInstance != null)
         {
             Destroy(this.gameObject);
             return;
         }
 
-        instance = this;
+        playerInstance = this;
+
+        canMove = true;
     }
 
     // Update is called once per frame

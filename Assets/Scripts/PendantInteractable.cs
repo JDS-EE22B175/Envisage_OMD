@@ -8,12 +8,15 @@ public class PendantInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject player;
     public float pickUpTime = 3f;
-    private PlayerInteract playerInteract;
     [SerializeField] Image pendantUI;
     // Start is called before the first frame update
     void Start()
     {
-        playerInteract = player.GetComponent<PlayerInteract>();
+        if(PlayerInteract.hasPendant == true)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     // Update is called once per frame
@@ -24,7 +27,7 @@ public class PendantInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        playerInteract.hasPendant = true;
+        PlayerInteract.hasPendant = true;
         gameObject.GetComponent<AudioSource>().Play();
         StartCoroutine(PickUp());
         

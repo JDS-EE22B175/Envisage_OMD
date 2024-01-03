@@ -19,26 +19,29 @@ public class PuzzleScreen : MonoBehaviour
     [SerializeField] GameObject puzzle1Button;
 
     [SerializeField] GameObject player;
-    PlayerInteract playerInteract;
+    [SerializeField] GameObject puzzlesLeftText;
+    TextMeshProUGUI puzzlesLeftTextData;
+    [SerializeField] GameObject completeText;
+    public int totalPuzzleCount = 3;
+    [SerializeField] GameObject[] puzzlesSolvedText;
 
-    [SerializeField] TextMeshProUGUI completeText;
-
-    bool puzzle1Solved = false;
-    bool puzzle2Solved = false;
-    bool puzzle3Solved = false;
+    static bool puzzle1Solved = false;
+    static bool puzzle2Solved = false;
+    static bool puzzle3Solved = false;
     // Start is called before the first frame update
     void Start()
     {
-        playerInteract = player.GetComponent<PlayerInteract>();
+        puzzlesLeftTextData = puzzlesLeftText.GetComponent<TextMeshProUGUI>();
+        puzzlesLeftTextData.text = "KEYS ACTIVATED : " + TimeMachine.puzzlesCompleted.ToString() + "/" + totalPuzzleCount.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(TimeMachine.puzzlesCompleted == 3)
+        if(TimeMachine.puzzlesCompleted == totalPuzzleCount)
         {
             puzzleButtons.SetActive(false);
-            completeText.enabled = true;
+            completeText.SetActive(true);
         }
     }
     void DisableAllInputs()
@@ -58,6 +61,7 @@ public class PuzzleScreen : MonoBehaviour
             DisableAllInputs();
             puzzle1Button.SetActive(true);
             inputFieldContainer.SetActive(true);
+            puzzlesLeftText.SetActive(false);
         }
     }
 
@@ -68,6 +72,7 @@ public class PuzzleScreen : MonoBehaviour
             DisableAllInputs();
             puzzleInput2.SetActive(true);
             inputFieldContainer.SetActive(true);
+            puzzlesLeftText.SetActive(false);
         }
     }
 
@@ -78,6 +83,7 @@ public class PuzzleScreen : MonoBehaviour
             DisableAllInputs();
             puzzleInput3.SetActive(true);
             inputFieldContainer.SetActive(true);
+            puzzlesLeftText.SetActive(false);
         }
     }
     public void Puzzle4()
@@ -85,37 +91,51 @@ public class PuzzleScreen : MonoBehaviour
         DisableAllInputs();
         puzzleInput4.SetActive(true);
         inputFieldContainer.SetActive(true);
+        puzzlesLeftText.SetActive(false);
     }
     public void Puzzle5()
     {
         DisableAllInputs();
         puzzleInput5.SetActive(true);
         inputFieldContainer.SetActive(true);
+        puzzlesLeftText.SetActive(false);
     }
 
     public void UsePendant()
     {
-        if (playerInteract.hasPendant)
+        if (PlayerInteract.hasPendant)
         {
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzle1Button);
             puzzleButtons.SetActive(true);
             puzzle1Solved = true;
-        }
-    }
-    public void CheckInput2(string input)
-    {
-        if (input.ToUpper() == "CODE2")
-        {
-            TimeMachine.puzzlesCompleted++;
-            Destroy(puzzleInput2);
-            puzzle2Solved = true;
+            StartCoroutine(DisplaySolvedText(0));
+            puzzlesLeftTextData.text = "KEYS ACTIVATED : " + TimeMachine.puzzlesCompleted.ToString() + "/" + totalPuzzleCount.ToString();
         }
         else
         {
             DisableAllInputs();
+            puzzleButtons.SetActive(true);
+            puzzlesLeftText.SetActive(true);
         }
-        puzzleButtons.SetActive(true);
+    }
+    public void CheckInput2(string input)
+    {
+        if (input.ToUpper() == "25")
+        {
+            TimeMachine.puzzlesCompleted++;
+            Destroy(puzzleInput2);
+            puzzle2Solved = true;
+            StartCoroutine(DisplaySolvedText(1));
+            puzzlesLeftTextData.text = "KEYS ACTIVATED : " + TimeMachine.puzzlesCompleted.ToString() + "/" + totalPuzzleCount.ToString();
+        }
+        else
+        {
+            DisableAllInputs();
+            puzzleButtons.SetActive(true);
+            puzzlesLeftText.SetActive(true);
+        }
+        
     }
     public void CheckInput3(string input)
     {
@@ -124,12 +144,15 @@ public class PuzzleScreen : MonoBehaviour
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzleInput3);
             puzzle3Solved = true;
+            StartCoroutine(DisplaySolvedText(2));
+            puzzlesLeftTextData.text = "KEYS ACTIVATED : " + TimeMachine.puzzlesCompleted.ToString() + "/" + totalPuzzleCount.ToString();
         }
         else
         {
             DisableAllInputs();
+            puzzleButtons.SetActive(true);
+            puzzlesLeftText.SetActive(true);
         }
-        puzzleButtons.SetActive(true);
     }
     public void CheckInput4(string input)
     {
@@ -137,12 +160,15 @@ public class PuzzleScreen : MonoBehaviour
         {
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzleInput4);
+            StartCoroutine(DisplaySolvedText(3));
+            puzzlesLeftTextData.text = "KEYS ACTIVATED : " + TimeMachine.puzzlesCompleted.ToString() + "/" + totalPuzzleCount.ToString();
         }
         else
         {
             DisableAllInputs();
+            puzzleButtons.SetActive(true);
+            puzzlesLeftText.SetActive(true);
         }
-        puzzleButtons.SetActive(true);
     }
     public void CheckInput5(string input)
     {
@@ -150,12 +176,24 @@ public class PuzzleScreen : MonoBehaviour
         {
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzleInput5);
+            StartCoroutine(DisplaySolvedText(4));
+            puzzlesLeftTextData.text = "KEYS LEFT : " + TimeMachine.puzzlesCompleted.ToString() + "/" + totalPuzzleCount.ToString();
         }
         else
         {
             DisableAllInputs();
+            puzzleButtons.SetActive(true);
+            puzzlesLeftText.SetActive(true);
         }
-        puzzleButtons.SetActive(true);
     }
   
+
+    IEnumerator DisplaySolvedText(int puzzleNumber)
+    {
+        puzzlesSolvedText[puzzleNumber].SetActive(true);
+        yield return new WaitForSeconds(1f);
+        puzzlesSolvedText[puzzleNumber].SetActive(false);
+        puzzleButtons.SetActive(true);
+        puzzlesLeftText.SetActive(true);
+    }
 }

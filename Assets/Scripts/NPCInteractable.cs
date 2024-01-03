@@ -8,15 +8,24 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     int interactHash;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] List<string> dialogues;
+    [SerializeField] float rotationOffset = 0f;
+    public float textSpeed = DialogueManager.defaultTextSpeed;
+    float waitTime = 1f;
     private void Start()
     {
         animator = GetComponent<Animator>();
         interactHash = Animator.StringToHash("Talking");
+        PlayerInteract.isinteracting = false;
+        waitTime = 1f * dialogues.Count;
     }
     public void Interact(Transform interactorTransform)
     {
+        if(gameObject.name == "Olivia - The Lab Assistant")
+        {
+            PlayerInteract.talkedToOlivia = true;
+        }
         dialogueBox.SetActive(true);
-        StartCoroutine(dialogueBox.GetComponent<DialogueManager>().ShowDialogueText(dialogues));
+        StartCoroutine(dialogueBox.GetComponent<DialogueManager>().ShowDialogueText(dialogues, textSpeed));
         if (animator != null)
         {
             animator.SetBool(interactHash, true);
@@ -26,7 +35,9 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     IEnumerator talkWait()
     {
-        yield return new WaitForSeconds(0.5f);
+        transform.Rotate(Vector3.up * rotationOffset);
+        yield return new WaitForSeconds(waitTime);
+        transform.Rotate(Vector3.down * rotationOffset);
         animator.SetBool(interactHash, false);
     }
 

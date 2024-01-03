@@ -9,11 +9,14 @@ public class PlayerInteract : MonoBehaviour
     public bool isInteractingView = false;
     static IInteractable interactable = null;
     public static IInteractable closestInteractable = null;
-    public bool hasPendant = false;
+    public static bool hasPendant = false;
     public float interactBufferTime = 1f;
     public bool canInteract = true;
     float timeSinceInteractionStarted = 0f;
-    public string Name = "";
+
+    public static bool pausedGame = false;
+
+    public static bool talkedToOlivia = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +27,6 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         isInteractingView = isinteracting;
-
-        if(closestInteractable != null)
-        {
-            Name = closestInteractable.GetInteractText();
-        }
-        else
-        {
-            Name = "";
-        }
 
         GetInteractable();
 
