@@ -10,9 +10,9 @@ public class PlayerInteract : MonoBehaviour
     static IInteractable interactable = null;
     public static IInteractable closestInteractable = null;
     public static bool hasPendant = false;
-    public float interactBufferTime = 1f;
-    public bool canInteract = true;
-    float timeSinceInteractionStarted = 0f;
+    //public float interactBufferTime = 1f;
+    //public bool canInteract = true;
+    //float timeSinceInteractionStarted = 0f;
 
     public static bool pausedGame = false;
 
@@ -33,14 +33,15 @@ public class PlayerInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             interactable = GetInteractable();
-            if(interactable != null && !isinteracting && canInteract)
+            if(interactable != null && !isinteracting) //&& canInteract
             {
                 interactable.Interact(transform);
                 isinteracting = true;
-                canInteract = false;
+                //canInteract = false;
             }
         }
 
+        /*
         if(!canInteract)
         {
             timeSinceInteractionStarted += Time.deltaTime;
@@ -51,6 +52,7 @@ public class PlayerInteract : MonoBehaviour
             timeSinceInteractionStarted = 0f;
             canInteract = true;
         }
+        */
 
     }
 

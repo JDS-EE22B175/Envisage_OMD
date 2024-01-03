@@ -9,6 +9,7 @@ public class NarrationScript : MonoBehaviour
 {
     [SerializeField] GameObject[] imageArray;
     [SerializeField] TextMeshProUGUI narrationText;
+    [SerializeField] string[] text;
 
     public float[] timePerImage;
     float timeElapsedForThisImage = 0f;
@@ -17,6 +18,7 @@ public class NarrationScript : MonoBehaviour
     void Start()
     {
         imageArray[0].SetActive(true);
+        narrationText.text = text[0];
     }
 
     void CloseAllImages()
@@ -29,20 +31,33 @@ public class NarrationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            NextImage();
+        }
 
         timeElapsedForThisImage += Time.deltaTime;
 
         if (timeElapsedForThisImage >= timePerImage[currentImage])
         {
-            currentImage++;
-            timeElapsedForThisImage = 0f;
-            CloseAllImages();
-            if(currentImage != imageArray.Length) 
-                imageArray[currentImage].SetActive(true);
-            else
-            {
-                SceneManager.LoadScene("Auditorium");
-            }
+            NextImage();
+        }
+    }
+
+    void NextImage()
+    {
+        currentImage++;
+        timeElapsedForThisImage = 0f;
+        CloseAllImages();
+        if (currentImage != imageArray.Length)
+        {
+            imageArray[currentImage].SetActive(true);
+            narrationText.text = text[currentImage];
+        }
+
+        else
+        {
+            SceneTransitions.SceneChange("Auditorium");
         }
     }
 }

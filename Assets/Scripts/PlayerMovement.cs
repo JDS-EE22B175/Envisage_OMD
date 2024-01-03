@@ -144,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         bool right = Input.GetKey(KeyCode.D);
         bool backward = Input.GetKey(KeyCode.S);
         bool left = Input.GetKey(KeyCode.A);
-
+     
         ChangeVelocity(forward, left, right, MaxVel, backward);
         LockResetVelocity(forward, left, right, MaxVel, backward);
         ApplyGravity();

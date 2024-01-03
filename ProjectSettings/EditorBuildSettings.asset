@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Laboratory.unity
-    guid: c76f001240321d642b597772df6ff1ac
+    path: Assets/Scenes/MainScreen.unity
+    guid: 4845e1d1cfd83fd4dba71283ff4a9713
+  - enabled: 1
+    path: Assets/Scenes/NarrationScene.unity
+    guid: 06b38e0bb72a2ff43852a3b5cb292a62
   - enabled: 1
     path: Assets/Scenes/Auditorium.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/MainScreen.unity
-    guid: 4845e1d1cfd83fd4dba71283ff4a9713
+    path: Assets/Scenes/Laboratory.unity
+    guid: c76f001240321d642b597772df6ff1ac
   - enabled: 1
     path: Assets/Scenes/Terrace.unity
     guid: 7476154c723995246b079688a12af34a
