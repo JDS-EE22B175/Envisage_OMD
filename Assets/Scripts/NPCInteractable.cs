@@ -16,7 +16,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] AudioSource finalChatAudio = null;
 
     [SerializeField] GameObject adlyButtons;
-    public bool choseCorrect = false;
+    public static bool choseCorrect = false;
     float waitTime = 1f;
     private void Start()
     {

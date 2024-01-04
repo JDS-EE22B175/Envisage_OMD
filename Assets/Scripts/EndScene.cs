@@ -27,7 +27,7 @@ public class EndScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerInteract.talkedToDeAdly)
+        if(NPCInteractable.choseCorrect)
         {
             dialogueCount = commonDisplayText.Length + winDisplayText.Length;
             text = commonDisplayText.Concat(winDisplayText).ToArray();
