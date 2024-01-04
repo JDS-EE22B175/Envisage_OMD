@@ -24,6 +24,7 @@ public class PuzzleScreen : MonoBehaviour
     [SerializeField] GameObject completeText;
     public int totalPuzzleCount = 3;
     [SerializeField] GameObject[] puzzlesSolvedText;
+    [SerializeField] TimeMachine timeMachine;
 
     static bool puzzle1Solved = false;
     static bool puzzle2Solved = false;
@@ -42,6 +43,8 @@ public class PuzzleScreen : MonoBehaviour
         {
             puzzleButtons.SetActive(false);
             completeText.SetActive(true);
+            completeText.GetComponent<AudioSource>().enabled = true;
+            StartCoroutine(ActivatedTimeMachine());
         }
     }
     void DisableAllInputs()
@@ -121,7 +124,7 @@ public class PuzzleScreen : MonoBehaviour
     }
     public void CheckInput2(string input)
     {
-        if (input.ToUpper() == "25")
+        if (input.ToUpper() == "1755")
         {
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzleInput2);
@@ -139,7 +142,7 @@ public class PuzzleScreen : MonoBehaviour
     }
     public void CheckInput3(string input)
     {
-        if (input.ToUpper() == "CODE3")
+        if (input.ToUpper() == "25")
         {
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzleInput3);
@@ -195,5 +198,11 @@ public class PuzzleScreen : MonoBehaviour
         puzzlesSolvedText[puzzleNumber].SetActive(false);
         puzzleButtons.SetActive(true);
         puzzlesLeftText.SetActive(true);
+    }
+
+    IEnumerator ActivatedTimeMachine()
+    {
+        yield return new WaitForSeconds(3f);
+        timeMachine.CloseTimeMachineUI();
     }
 }

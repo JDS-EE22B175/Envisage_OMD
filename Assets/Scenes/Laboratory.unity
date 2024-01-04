@@ -1204,6 +1204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeSlider: {fileID: 777820427}
   virtualCamera: {fileID: 0}
+  video: {fileID: 0}
+  playerMovement: {fileID: 0}
+  videoTime: 14
 --- !u!4 &764161695
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,6 +1418,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5909289000058102881, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5909289000058102881, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 367.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5909289000058102881, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -3333026256096374355, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1422,6 +1437,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       propertyPath: m_Name
       value: Laboratory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371129334534221765, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+      propertyPath: m_Name
+      value: Papers
       objectReference: {fileID: 0}
     - target: {fileID: 8638194064304459294, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1576,6 +1595,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4186111345061089829, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 188751394}
+    - targetCorrespondingSourceObject: {fileID: 7371129334534221765, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 785327611}
+    - targetCorrespondingSourceObject: {fileID: 7371129334534221765, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 785327610}
     - targetCorrespondingSourceObject: {fileID: 805032660887264130, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1147860611}
@@ -1656,6 +1681,49 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8469772272730885973, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+--- !u!1 &785327609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7371129334534221765, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
+  m_PrefabInstance: {fileID: 785327604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &785327610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785327609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c665d0898701d4eb4fcd0248436f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 216792184}
+  dialogues:
+  - 'Meet someone very dear to me, that I betrayed. '
+  - '- Stellan University, 1755'
+  textSpeed: 0.1
+--- !u!65 &785327611
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785327609}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 84.15347, y: 70.031166, z: 26.53755}
+  m_Center: {x: 9.755506, y: 18.776934, z: 12.750014}
 --- !u!1 &799976180 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5363104395826476965, guid: 29b0c90d18d07c541a116ba6c1e1c2bc, type: 3}
@@ -2587,8 +2655,8 @@ Transform:
   m_GameObject: {fileID: 1376466934}
   serializedVersion: 2
   m_LocalRotation: {x: 0.61358005, y: 0.35145354, z: -0.35145354, w: 0.61358005}
-  m_LocalPosition: {x: 3.431, y: 0.38, z: 0.423}
-  m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
+  m_LocalPosition: {x: 3.353, y: 0.38, z: 0.423}
+  m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 785327605}
@@ -2725,7 +2793,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 3.202, y: 0.38, z: -0.4848}
-  m_LocalScale: {x: 0.0025, y: 0.0025, z: 0.0025}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 785327605}

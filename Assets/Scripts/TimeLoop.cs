@@ -7,7 +7,7 @@ using TMPro;
 
 public class TimeLoop : MonoBehaviour
 {
-    public static float loopDuration = 60f;
+    public static float loopDuration = 90f;
     [SerializeField] Slider timeSlider;
     int startTime = 6;
     int endTime = 9;
@@ -47,15 +47,23 @@ public class TimeLoop : MonoBehaviour
         SceneTransitions.FadeIn();
         yield return new WaitForSeconds(2f);
 
-        video.SetActive(true);
-        yield return new WaitForSeconds(videoTime);
-        video.SetActive(false);
-        SceneManager.LoadScene("Auditorium");
+        if (TimeMachine.puzzlesCompleted != 3)
+        {
+            video.SetActive(true);
+            yield return new WaitForSeconds(videoTime);
+            video.SetActive(false);
+            SceneManager.LoadScene("Auditorium");
 
-        playerMovement.GetComponent<Animator>().Play("Push Up To Idle");
-        
-        secondsElapsed = 0f;
-        Destroy(virtualCamera);
-        Destroy(gameObject);
+            playerMovement.GetComponent<Animator>().Play("Push Up To Idle");
+
+            secondsElapsed = 0f;
+            Destroy(virtualCamera);
+            Destroy(gameObject);
+        }
+
+        else
+        {
+            SceneManager.LoadScene("EndScene");
+        }
     }
 }

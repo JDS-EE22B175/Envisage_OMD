@@ -42,6 +42,13 @@ public class PlayerMovement : MonoBehaviour
 
         playerInstance = this;
 
+        StartCoroutine(WakeUp());
+    }
+
+    IEnumerator WakeUp()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(5f);
         canMove = true;
     }
 

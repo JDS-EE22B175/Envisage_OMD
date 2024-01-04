@@ -16,7 +16,9 @@ public class PlayerInteract : MonoBehaviour
 
     public static bool pausedGame = false;
 
-    public static bool talkedToOlivia = false;
+    public static bool talkedToDeAdly = false;
+
+    [SerializeField] AudioSource interactSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class PlayerInteract : MonoBehaviour
             if(interactable != null && !isinteracting) //&& canInteract
             {
                 interactable.Interact(transform);
+                interactSound.Play();
                 isinteracting = true;
                 //canInteract = false;
             }

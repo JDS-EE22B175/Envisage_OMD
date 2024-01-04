@@ -9,6 +9,7 @@ public class MainMenuScript : MonoBehaviour
     AudioSource audioSource1;
     [SerializeField] AudioSource audioSource2;
     [SerializeField] Animator overlayAnimation;
+    [SerializeField] GameObject optionsOverlay;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,5 +49,18 @@ public class MainMenuScript : MonoBehaviour
         overlayAnimation.enabled = true;
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("NarrationScene");
+    }
+
+    public void OptionsButton()
+    {
+        audioSource2.Play();
+        StartCoroutine(Options());
+    }
+
+    public IEnumerator Options()
+    {
+        optionsOverlay.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        optionsOverlay.SetActive(false);
     }
 }
