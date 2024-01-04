@@ -10,6 +10,7 @@ public class NarrationScript : MonoBehaviour
     [SerializeField] GameObject[] imageArray;
     [SerializeField] TextMeshProUGUI narrationText;
     [SerializeField] string[] text;
+    [SerializeField] GameObject auditoriumButton;
 
     public float[] timePerImage;
     float timeElapsedForThisImage = 0f;
@@ -31,8 +32,12 @@ public class NarrationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(1))
         {
+            if(currentImage == imageArray.Length)
+            {
+                SceneTransitions.SceneChange("Auditorium");
+            }
             NextImage();
         }
 
@@ -54,10 +59,23 @@ public class NarrationScript : MonoBehaviour
             imageArray[currentImage].SetActive(true);
             narrationText.text = text[currentImage];
         }
-
         else
         {
             SceneTransitions.SceneChange("Auditorium");
+
         }
+
+        if (currentImage == imageArray.Length )
+        {
+            auditoriumButton.SetActive(true);
+        }
+
+        
+    }
+
+    public void GoToAudi()
+    {
+        SceneManager.LoadScene("Auditorium");
+        SceneTransitions.SceneChange("Auditorium");
     }
 }

@@ -411,7 +411,6 @@ MonoBehaviour:
   textSpeed: 0.1
   finalChatAudio: {fileID: 0}
   adlyButtons: {fileID: 0}
-  choseCorrect: 0
 --- !u!95 &77991884
 Animator:
   serializedVersion: 5
@@ -1741,13 +1740,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 2055705903}
   dialogues:
-  - The thing care about the most is what we leave for the end!
+  - The thing we care about the most is what we leave for the end!
   adlyCaughtDialogues: []
   rotationOffset: 0
   textSpeed: 0.05
   finalChatAudio: {fileID: 0}
   adlyButtons: {fileID: 0}
-  choseCorrect: 0
 --- !u!95 &440901576
 Animator:
   serializedVersion: 5
@@ -4013,7 +4011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.038470894, y: -0.84191185, z: 0.06056028, w: 0.5348242}
+  m_LocalRotation: {x: 0.038470898, y: -0.84191185, z: 0.060560275, w: 0.5348242}
   m_LocalPosition: {x: 5.555201, y: 2.632, z: 5.881645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5096,7 +5094,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1920, y: 1200}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -8828,7 +8826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07174648
+      value: 0.071746476
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8836,7 +8834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000007450581
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8881,7 +8879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3051843833319597870, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -810
+      value: -1046
       objectReference: {fileID: 0}
     - target: {fileID: 3764374667997686773, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_Name
@@ -8889,7 +8887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4612570064122724245, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 819
+      value: 892
       objectReference: {fileID: 0}
     - target: {fileID: 6354952301152798408, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_LocalPosition.x

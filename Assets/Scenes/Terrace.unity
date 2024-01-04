@@ -1334,7 +1334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3051843833319597870, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -883
+      value: -1052
       objectReference: {fileID: 0}
     - target: {fileID: 3764374667997686773, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_Name
@@ -1342,7 +1342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4612570064122724245, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 846
+      value: 914
       objectReference: {fileID: 0}
     - target: {fileID: 6354952301152798408, guid: acdbf2e0d60467644b5733dbde719a3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2335,7 +2335,6 @@ MonoBehaviour:
   textSpeed: 0.05
   finalChatAudio: {fileID: 1799751518}
   adlyButtons: {fileID: 2146603300}
-  choseCorrect: 0
 --- !u!82 &1799751518
 AudioSource:
   m_ObjectHideFlags: 0

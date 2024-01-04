@@ -10,15 +10,7 @@ public class SceneTransitions : MonoBehaviour
     static Animator transitionAnimator;
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
 
         transitionAnimator = GetComponent<Animator>();
     }
