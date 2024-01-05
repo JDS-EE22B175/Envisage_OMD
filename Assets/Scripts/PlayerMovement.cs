@@ -163,10 +163,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        bool forward = Input.GetKey(KeyCode.W);
-        bool right = Input.GetKey(KeyCode.D);
-        bool backward = Input.GetKey(KeyCode.S);
-        bool left = Input.GetKey(KeyCode.A);
+        bool forward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+        bool backward = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
         bool close = Input.GetKey(KeyCode.RightAlt);
         //bool sprint = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
      

@@ -3239,7 +3239,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 2055705903}
   dialogues:
   - The lawyers won't be happy when they hear the news.
-  - '!This is the 12th accident here since the 2000s.'
+  - This is the 12th accident here since, the major one back in 1980.
   - But nothing was as catastrophic as this!
   adlyCaughtDialogues: []
   rotationOffset: 0
@@ -3922,7 +3922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.038470898, y: -0.84191185, z: 0.060560275, w: 0.5348242}
+  m_LocalRotation: {x: 0.038470894, y: -0.84191185, z: 0.06056028, w: 0.5348242}
   m_LocalPosition: {x: 5.555201, y: 2.632, z: 5.881645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8900,7 +8900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.071746476
+      value: 0.07174648
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8908,7 +8908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 4642457987536448853, guid: ad199ccf67e8d234391c97d4e1ff4e37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
