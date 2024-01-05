@@ -24,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     public static bool canMove = true;
     public float _gravity = -9.81f;
+
+
+    public GameObject pendant;
+    public Transform pendantLocation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +53,19 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator WakeUp()
     {
         canMove = false;
+        virtualCamera.enabled = false;
+        PlayerInteract.hasPendant = false;
+        PuzzleScreen.puzzle1Solved = false;
+        PuzzleScreen.puzzle2Solved = false;
+        PuzzleScreen.puzzle3Solved = false;
+        TimeMachine.puzzlesCompleted = 0;
+        GameObject newPendant = Instantiate(pendant, pendantLocation);
+        newPendant.transform.localScale = Vector3.one;
+        newPendant.name = "Pendant";
+
         yield return new WaitForSeconds(5f);
         canMove = true;
+        virtualCamera.enabled = true;
     }
 
     // Update is called once per frame
@@ -151,6 +167,8 @@ public class PlayerMovement : MonoBehaviour
         bool right = Input.GetKey(KeyCode.D);
         bool backward = Input.GetKey(KeyCode.S);
         bool left = Input.GetKey(KeyCode.A);
+        bool close = Input.GetKey(KeyCode.RightAlt);
+        //bool sprint = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
      
         ChangeVelocity(forward, left, right, MaxVel, backward);
         LockResetVelocity(forward, left, right, MaxVel, backward);
@@ -179,6 +197,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             walkingSound.enabled = false;
+        }
+
+        if(close)
+        {
+            Application.Quit();
         }
     }
 }

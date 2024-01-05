@@ -10,6 +10,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactText;
     [SerializeField] Slider timeSlider;
     [SerializeField] TextMeshProUGUI time;
+    public Image pendantUI;
 
     private void Update()
     {
@@ -25,7 +26,7 @@ public class UIHandler : MonoBehaviour
         }
 
         time.text = TimeLoop.text;
-        timeSlider.value = TimeLoop.timeLeft / TimeLoop.loopDuration;
+        timeSlider.value = 1 - TimeLoop.timeLeft / TimeLoop.loopDuration;
     }
     private void Show(IInteractable interactable)
     {
@@ -33,6 +34,13 @@ public class UIHandler : MonoBehaviour
         {
             containerObject.SetActive(true);
             interactText.text = interactable.GetInteractText();
+        }
+        else
+        {
+            if(PlayerInteract.hasPendant)
+            {
+                pendantUI.color = new Color(255, 255, 255, 255);
+            }
         }
     }
 

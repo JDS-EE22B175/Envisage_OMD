@@ -17,29 +17,31 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] GameObject adlyButtons;
     public static bool choseCorrect = false;
-    float waitTime = 1f;
+    public float waitTime = 1f;
     private void Start()
     {
         animator = GetComponent<Animator>();
         interactHash = Animator.StringToHash("Talking");
 
         PlayerInteract.isinteracting = false;
-        waitTime = 1f * dialogues.Count;
     }
     public void Interact(Transform interactorTransform)
     {
         if(gameObject.name == "Dr.Kevin de Adly" && TimeMachine.puzzlesCompleted == 3)
         {
             PlayerInteract.talkedToDeAdly = true;
+            StartCoroutine(FinalTalk());
             dialogues.Clear();
             dialogues = adlyCaughtDialogues;
             animator.SetTrigger("Caught");
+            waitTime = 1f * dialogues.Count;
             finalChatAudio.enabled = true;
+            
         }
 
         dialogueBox.SetActive(true);
         StartCoroutine(dialogueBox.GetComponent<DialogueManager>().ShowDialogueText(dialogues, textSpeed));
-        if (animator != null)
+        if (animator != null && gameObject.name != "Dr.Kevin de Adly")
         {
             animator.SetBool(interactHash, true);
             StartCoroutine(talkWait());
@@ -69,11 +71,12 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         return transform;
     }
 
-    IEnumerator finalTalk()
+    IEnumerator FinalTalk()
     {
         adlyButtons.SetActive(true);
         yield return new WaitForSeconds(10f);
         adlyButtons.SetActive(false);
+        StartCoroutine(talkWait());
     }
 
     public void adlyChoice()

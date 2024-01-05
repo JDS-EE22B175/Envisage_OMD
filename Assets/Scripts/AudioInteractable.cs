@@ -7,6 +7,7 @@ public class AudioInteractable : MonoBehaviour, IInteractable
 {
     AudioSource audioSource;
     [SerializeField] float audioLength;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,8 @@ public class AudioInteractable : MonoBehaviour, IInteractable
         PlayerMovement.canMove = false;
         PlayerInteract.isinteracting = true;
         StartCoroutine(ListenToAudio(interactorTransform));
+
+
     }
 
     IEnumerator ListenToAudio(Transform interactorTransform)

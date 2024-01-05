@@ -8,7 +8,6 @@ using TMPro;
 public class TimeLoop : MonoBehaviour
 {
     public static float loopDuration = 90f;
-    [SerializeField] Slider timeSlider;
     int startTime = 6;
     int endTime = 9;
     public static float timeLeft = loopDuration;
@@ -18,7 +17,9 @@ public class TimeLoop : MonoBehaviour
     public static string text;
     [SerializeField] GameObject virtualCamera;
     [SerializeField] GameObject video;
+    public float secondsView;
 
+    public AudioSource bgm;
     [SerializeField] PlayerMovement playerMovement;
     public float videoTime = 14f;
 
@@ -27,13 +28,13 @@ public class TimeLoop : MonoBehaviour
     {
         StartCoroutine(TimeLoopCoroutine());
         currentHour = startTime;
-        //secondsElapsed = 0f;
         hourDuration = loopDuration / (endTime - startTime);
     }
 
     // Update is called once per frame
     void Update()
     {
+        secondsView = secondsElapsed;
         secondsElapsed += Time.deltaTime;
         currentHour = startTime + (int)(secondsElapsed / hourDuration);
         text = currentHour.ToString() + " : " + Mathf.RoundToInt(secondsElapsed % hourDuration).ToString("D2");
@@ -44,26 +45,36 @@ public class TimeLoop : MonoBehaviour
     {
         yield return new WaitForSeconds(loopDuration);
 
+        bgm.enabled = false;
+
         SceneTransitions.FadeIn();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
-        if (TimeMachine.puzzlesCompleted != 3)
+
+        GameObject currentVideo = Instantiate(video);
+        currentVideo.SetActive(true);
+
+        if (TimeMachine.puzzlesCompleted == 3)
         {
-            video.SetActive(true);
-            yield return new WaitForSeconds(videoTime);
-            video.SetActive(false);
-            SceneManager.LoadScene("Auditorium");
-
-            playerMovement.GetComponent<Animator>().Play("Push Up To Idle");
-
-            secondsElapsed = 0f;
-            Destroy(virtualCamera);
-            Destroy(gameObject);
+            StartCoroutine(SceneTransitions.SceneChange("EndScene"));
         }
 
-        else
-        {
-            SceneManager.LoadScene("EndScene");
-        }
+        yield return new WaitForSeconds(videoTime);
+
+        currentVideo.SetActive(false);
+        Destroy(currentVideo);
+
+        SceneManager.LoadScene("Auditorium");
+        bgm.enabled = true;
+        PlayerInteract.hasPendant = false;
+        TimeMachine.puzzlesCompleted = 0;
+
+        playerMovement.GetComponent<Animator>().Play("Push Up To Idle");
+
+        
+        secondsElapsed = 0f;
+        Destroy(virtualCamera);
+        Destroy(gameObject);
+
     }
 }

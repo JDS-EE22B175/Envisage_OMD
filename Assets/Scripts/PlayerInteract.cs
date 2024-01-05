@@ -18,6 +18,7 @@ public class PlayerInteract : MonoBehaviour
 
     public static bool talkedToDeAdly = false;
 
+
     [SerializeField] AudioSource interactSound;
     // Start is called before the first frame update
     void Start()
@@ -93,6 +94,7 @@ public class PlayerInteract : MonoBehaviour
         {
             return null;
         }
+        
 
         return closestInteractable;
     }

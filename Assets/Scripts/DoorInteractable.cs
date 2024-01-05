@@ -24,9 +24,9 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     public void Interact(Transform interactorTransform)
     {
         PlayerInteract.isinteracting = false;
+        
         StartCoroutine(SceneTransitions.SceneChange(sceneToLoad));
         DontDestroyOnLoad(player);
-
     }
     public string GetInteractText()
     {

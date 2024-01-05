@@ -60,7 +60,7 @@ public class MainMenuScript : MonoBehaviour
     public IEnumerator Options()
     {
         optionsOverlay.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         optionsOverlay.SetActive(false);
     }
 }

@@ -8,7 +8,7 @@ public class PendantInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject player;
     public float pickUpTime = 3f;
-    [SerializeField] Image pendantUI;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +35,7 @@ public class PendantInteractable : MonoBehaviour, IInteractable
 
     IEnumerator PickUp()
     {
-        pendantUI.color = new Color(255, 255, 255, 255);
+        
         yield return new WaitForSeconds(pickUpTime);
         PlayerInteract.isinteracting = false;
         PlayerInteract.closestInteractable = null;

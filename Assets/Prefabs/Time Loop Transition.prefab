@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 6760754040804499195}
   m_Layer: 5
   m_Name: Time Loop Transition
-  m_TagString: Untagged
+  m_TagString: Video
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

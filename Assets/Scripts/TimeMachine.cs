@@ -46,7 +46,7 @@ public class TimeMachine : MonoBehaviour, IInteractable
         PlayerInteract.isinteracting = false;
         interactionUIContainer.SetActive(true);
         pendant.SetActive (true);
-        Debug.Log("UI Closed");
+        
     }
     // Start is called before the first frame update
     void Start()

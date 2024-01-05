@@ -256,7 +256,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6561631843356796678, guid: 1d3ef0fa60c67ea49847b864c209edfc, type: 3}
       propertyPath: dialogues.Array.data[3]
-      value: It's been 25 years to the day since Dr. Thomspson and Dr. Adly met.
+      value: This is the exact day in 1999 that Dr. Thomspson and Dr. Adly started
+        going to the same university.
       objectReference: {fileID: 0}
     - target: {fileID: 6561631843356796678, guid: 1d3ef0fa60c67ea49847b864c209edfc, type: 3}
       propertyPath: dialogues.Array.data[4]
@@ -1054,7 +1055,7 @@ GameObject:
   - component: {fileID: 756430958}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1202,9 +1203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b16ce0cb3319964fb998a5d5f13826c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSlider: {fileID: 777820427}
   virtualCamera: {fileID: 0}
   video: {fileID: 0}
+  secondsView: 0
+  bgm: {fileID: 0}
   playerMovement: {fileID: 0}
   videoTime: 14
 --- !u!4 &764161695

@@ -26,9 +26,9 @@ public class PuzzleScreen : MonoBehaviour
     [SerializeField] GameObject[] puzzlesSolvedText;
     [SerializeField] TimeMachine timeMachine;
 
-    static bool puzzle1Solved = false;
-    static bool puzzle2Solved = false;
-    static bool puzzle3Solved = false;
+    public static bool puzzle1Solved = false;
+    public static bool puzzle2Solved = false;
+    public static bool puzzle3Solved = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -204,5 +204,6 @@ public class PuzzleScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         timeMachine.CloseTimeMachineUI();
+        Destroy(gameObject);
     }
 }
