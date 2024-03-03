@@ -12,6 +12,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] List<string> adlyCaughtDialogues;
     [SerializeField] float rotationOffset = 0f;
     public float textSpeed = DialogueManager.defaultTextSpeed;
+    [SerializeField] GameObject interactionUIContainer;
 
     [SerializeField] AudioSource finalChatAudio = null;
 
@@ -27,7 +28,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     }
     public void Interact(Transform interactorTransform)
     {
-        if(gameObject.name == "Dr.Kevin de Adly" && TimeMachine.puzzlesCompleted == 3)
+        if(gameObject.name == "Dr.Kevin de Adly" && TimeMachine.puzzlesCompleted == PuzzleScreen.totalPuzzleCount)
         {
             PlayerInteract.talkedToDeAdly = true;
             StartCoroutine(FinalTalk());

@@ -35,13 +35,13 @@ public class MainMenuScript : MonoBehaviour
 
     public void PointerEnter(GameObject gameObj)
     {
-        gameObj.transform.localScale = new Vector2(1.1f, 1.1f);
+        gameObj.transform.localScale = new Vector2(2.2f, 2.2f);
         audioSource1.Play();
     }
 
     public void PointerExit(GameObject gameObj)
     {
-        gameObj.transform.localScale = Vector2.one;
+        gameObj.transform.localScale = Vector2.one * 2;
     }
 
     IEnumerator PlaySceneChange()
@@ -54,13 +54,11 @@ public class MainMenuScript : MonoBehaviour
     public void OptionsButton()
     {
         audioSource2.Play();
-        StartCoroutine(Options());
+        optionsOverlay.SetActive(true);
     }
 
-    public IEnumerator Options()
+    public void closeSettings()
     {
-        optionsOverlay.SetActive(true);
-        yield return new WaitForSeconds(2f);
         optionsOverlay.SetActive(false);
     }
 }

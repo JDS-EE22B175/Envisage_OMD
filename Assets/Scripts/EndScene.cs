@@ -60,7 +60,7 @@ public class EndScene : MonoBehaviour
     {
         overlayBox.SetActive(false);
         narrationText.enabled = false;
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(7f);
         SceneManager.LoadScene("MainScreen");
     }
 

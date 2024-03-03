@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Video
   - Canvas
+  - UIContainer
+  - VCam
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Post Processing
   - 
   - 
   - 

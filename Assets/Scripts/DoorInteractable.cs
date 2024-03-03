@@ -9,10 +9,12 @@ public class DoorInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] string sceneToLoad;
     [SerializeField] GameObject player;
+    GameObject canvas;
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player");
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
     // Update is called once per frame
@@ -23,10 +25,10 @@ public class DoorInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        PlayerInteract.isinteracting = false;
-        
         StartCoroutine(SceneTransitions.SceneChange(sceneToLoad));
         DontDestroyOnLoad(player);
+        DontDestroyOnLoad(canvas);
+        PlayerInteract.isinteracting = false;
     }
     public string GetInteractText()
     {

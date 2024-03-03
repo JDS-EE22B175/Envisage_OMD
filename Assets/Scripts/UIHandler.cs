@@ -27,6 +27,7 @@ public class UIHandler : MonoBehaviour
 
         time.text = TimeLoop.text;
         timeSlider.value = 1 - TimeLoop.timeLeft / TimeLoop.loopDuration;
+
     }
     private void Show(IInteractable interactable)
     {
@@ -37,7 +38,7 @@ public class UIHandler : MonoBehaviour
         }
         else
         {
-            if(PlayerInteract.hasPendant)
+            if (PlayerInteract.hasPendant)
             {
                 pendantUI.color = new Color(255, 255, 255, 255);
             }

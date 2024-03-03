@@ -77,7 +77,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1200}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8561537637239878107, guid: 1f13366acd74c0d4faf2886def972e47, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 3cfad469f8c38b44a8cf158d740f8cdb, type: 3}
     - target: {fileID: 8835489670349091225, guid: 1f13366acd74c0d4faf2886def972e47, type: 3}
       propertyPath: m_Name
       value: Time Loop Transition

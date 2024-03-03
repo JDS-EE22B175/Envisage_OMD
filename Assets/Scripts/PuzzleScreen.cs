@@ -22,18 +22,22 @@ public class PuzzleScreen : MonoBehaviour
     [SerializeField] GameObject puzzlesLeftText;
     TextMeshProUGUI puzzlesLeftTextData;
     [SerializeField] GameObject completeText;
-    public int totalPuzzleCount = 3;
+    public static int totalPuzzleCount = 5;
     [SerializeField] GameObject[] puzzlesSolvedText;
     [SerializeField] TimeMachine timeMachine;
 
     public static bool puzzle1Solved = false;
     public static bool puzzle2Solved = false;
     public static bool puzzle3Solved = false;
+    public static bool puzzle4Solved = false;
+    public static bool puzzle5Solved = false;
+
     // Start is called before the first frame update
     void Start()
     {
         puzzlesLeftTextData = puzzlesLeftText.GetComponent<TextMeshProUGUI>();
         puzzlesLeftTextData.text = "KEYS ACTIVATED : " + TimeMachine.puzzlesCompleted.ToString() + "/" + totalPuzzleCount.ToString();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -91,17 +95,23 @@ public class PuzzleScreen : MonoBehaviour
     }
     public void Puzzle4()
     {
-        DisableAllInputs();
-        puzzleInput4.SetActive(true);
-        inputFieldContainer.SetActive(true);
-        puzzlesLeftText.SetActive(false);
+        if (!puzzle4Solved)
+        {
+            DisableAllInputs();
+            puzzleInput4.SetActive(true);
+            inputFieldContainer.SetActive(true);
+            puzzlesLeftText.SetActive(false);
+        }
     }
     public void Puzzle5()
     {
-        DisableAllInputs();
-        puzzleInput5.SetActive(true);
-        inputFieldContainer.SetActive(true);
-        puzzlesLeftText.SetActive(false);
+        if (!puzzle5Solved)
+        {
+            DisableAllInputs();
+            puzzleInput5.SetActive(true);
+            inputFieldContainer.SetActive(true);
+            puzzlesLeftText.SetActive(false);
+        }
     }
 
     public void UsePendant()
@@ -159,7 +169,7 @@ public class PuzzleScreen : MonoBehaviour
     }
     public void CheckInput4(string input)
     {
-        if (input.ToUpper() == "CODE4")
+        if (input.ToUpper() == "STELLAR")
         {
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzleInput4);
@@ -175,7 +185,7 @@ public class PuzzleScreen : MonoBehaviour
     }
     public void CheckInput5(string input)
     {
-        if (input.ToUpper() == "CODE5")
+        if (input.ToUpper() == "ANYA")
         {
             TimeMachine.puzzlesCompleted++;
             Destroy(puzzleInput5);

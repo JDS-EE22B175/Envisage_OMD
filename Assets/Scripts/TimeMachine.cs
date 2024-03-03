@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class TimeMachine : MonoBehaviour, IInteractable
 {
@@ -13,13 +16,33 @@ public class TimeMachine : MonoBehaviour, IInteractable
     public static int puzzlesCompleted = 0;
     [SerializeField] GameObject pendant;
 
+    void Start()
+    {
+        PlayerInteract.isinteracting = false;
+        GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerInteract = player.GetComponent<PlayerInteract>();
+        VirtualCamera = player.GetComponentInChildren<CinemachineVirtualCamera>().gameObject;
+        Debug.Log(canvas);
+        Transform[] canvasChildren = canvas.GetComponentsInChildren<Transform>();
+        foreach (Transform child in canvasChildren)
+        {
+            if (child.CompareTag("UIContainer"))
+            {
+                // Found the child object!
+                interactionUIContainer = child.gameObject;
+            }
+        }
+        Debug.Log(interactionUIContainer);
 
+    }
     public void Interact(Transform interactorTransform)
     {
         TimeMachineUI.SetActive(true);
         PlayerMovement.canMove = false;
-        VirtualCamera.GetComponent<MouseLook>().enabled = false;
+        
         playerInteract.enabled = false;
+        Debug.Log(interactionUIContainer);
         interactionUIContainer.SetActive(false);
         inputFields.SetActive(false);
         puzzleButtons.SetActive(true);
@@ -49,10 +72,7 @@ public class TimeMachine : MonoBehaviour, IInteractable
         
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        PlayerInteract.isinteracting = false;
-    }
+    
 
     // Update is called once per frame
     void Update()

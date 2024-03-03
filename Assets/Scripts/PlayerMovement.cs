@@ -2,6 +2,7 @@ using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -168,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
         bool backward = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
         bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
         bool close = Input.GetKey(KeyCode.RightAlt);
+        bool restartGame = Input.GetKey(KeyCode.L);
         //bool sprint = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
      
         ChangeVelocity(forward, left, right, MaxVel, backward);
@@ -202,6 +204,12 @@ public class PlayerMovement : MonoBehaviour
         if(close)
         {
             Application.Quit();
+        }
+
+        if(restartGame)
+        {
+            SceneManager.LoadScene("MainScreen");
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

@@ -18,7 +18,7 @@ public class PlayerInteract : MonoBehaviour
 
     public static bool talkedToDeAdly = false;
 
-
+    public MouseLook virtualCamera;
     [SerializeField] AudioSource interactSound;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,6 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         isInteractingView = isinteracting;
-
         GetInteractable();
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -38,10 +37,17 @@ public class PlayerInteract : MonoBehaviour
             interactable = GetInteractable();
             if(interactable != null && !isinteracting) //&& canInteract
             {
+                Debug.Log(interactable);
                 interactable.Interact(transform);
+ 
                 interactSound.Play();
                 isinteracting = true;
                 //canInteract = false;
+                if(interactable.GetInteractText() == "Interact with the Time Machine")
+                {
+                    virtualCamera.enabled = false;
+                }
+                PlayerMovement.canMove = false;
             }
         }
 
@@ -57,6 +63,7 @@ public class PlayerInteract : MonoBehaviour
             canInteract = true;
         }
         */
+        if (!isinteracting) PlayerMovement.canMove = true;
 
     }
 

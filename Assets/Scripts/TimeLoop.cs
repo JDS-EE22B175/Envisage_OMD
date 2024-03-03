@@ -22,6 +22,7 @@ public class TimeLoop : MonoBehaviour
     public AudioSource bgm;
     [SerializeField] PlayerMovement playerMovement;
     public float videoTime = 14f;
+    public static float totalTime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class TimeLoop : MonoBehaviour
         currentHour = startTime + (int)(secondsElapsed / hourDuration);
         text = currentHour.ToString() + " : " + Mathf.RoundToInt(secondsElapsed % hourDuration).ToString("D2");
         timeLeft = loopDuration - secondsElapsed;
+        totalTime += Time.deltaTime;
     }
 
     IEnumerator TimeLoopCoroutine()
@@ -54,9 +56,9 @@ public class TimeLoop : MonoBehaviour
         GameObject currentVideo = Instantiate(video);
         currentVideo.SetActive(true);
 
-        if (TimeMachine.puzzlesCompleted == 3)
+        if (TimeMachine.puzzlesCompleted == PuzzleScreen.totalPuzzleCount || totalTime >= 300f)
         {
-            StartCoroutine(SceneTransitions.SceneChange("EndScene"));
+            StartCoroutine(SceneTransitions.SceneChange("EndScene") );
         }
 
         yield return new WaitForSeconds(videoTime);
