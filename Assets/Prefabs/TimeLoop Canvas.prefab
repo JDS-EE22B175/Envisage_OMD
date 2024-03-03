@@ -206,10 +206,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6760754040804499195, guid: 1f13366acd74c0d4faf2886def972e47, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: 803dbda0f987c674fb1bd4bc2f82c26c, type: 2}
     - target: {fileID: 8561537637239878107, guid: 1f13366acd74c0d4faf2886def972e47, type: 3}
       propertyPath: m_VideoClip
       value: 
       objectReference: {fileID: 32900000, guid: 3cfad469f8c38b44a8cf158d740f8cdb, type: 3}
+    - target: {fileID: 8561537637239878107, guid: 1f13366acd74c0d4faf2886def972e47, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 803dbda0f987c674fb1bd4bc2f82c26c, type: 2}
     - target: {fileID: 8835489670349091225, guid: 1f13366acd74c0d4faf2886def972e47, type: 3}
       propertyPath: m_Name
       value: Time Loop Transition
